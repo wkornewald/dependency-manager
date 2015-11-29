@@ -10,6 +10,10 @@ for path in os.environ.get('PATH', '').split(os.pathsep):
     if os.path.basename(path) == 'dependency-manager':
         sys.path.append(path)
         break
+    path = os.path.join(path, 'dependency-manager')
+    if os.path.exists(path):
+        sys.path.append(path)
+        break
 os.environ['IGNORE_JARACO'] = '1'
 
 from dependencymanager.core import (get_project_root, get_dependencies_root,
