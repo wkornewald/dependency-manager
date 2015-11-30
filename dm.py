@@ -3,7 +3,7 @@ from dependencymanager.core import (clone_cmd, build_cmd, fetch_cmd, push_cmd,
     pull_cmd, status_cmd, diff_cmd, incoming_cmd, outgoing_cmd, deploy_cmd,
     revspec_cmd, tag_cmd, tags_cmd, update_cmd, addremove_cmd, record_cmd,
     commit_cmd, heads_cmd, branch_cmd, merge_cmd, publish_cmd, revert_cmd)
-from dependencymanager.repo import get_local_repo
+from dependencymanager.repo import find_local_repo
 from subprocess import call
 import argparse
 import os
@@ -21,7 +21,7 @@ type "dm help <command>" for command-specific help
 def update_dependency_manager():
     print('Checking for updates to dependency manager...')
     root = os.path.dirname(__file__)
-    repo = get_local_repo(root)
+    repo = find_local_repo(root)
     print(repo.pull())
 
 def help_cmd(args):
