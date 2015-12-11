@@ -457,7 +457,7 @@ class LocalGitRepo(LocalRepo):
 
     def pull(self):
         try:
-            result = call_git('pull', pipe=True, cwd=self.root)
+            result = call_git('pull', '--rebase', pipe=True, cwd=self.root)
         except ProcessError as error:
             if 'There is no tracking information for the current branch' in error.message:
                 return ''
